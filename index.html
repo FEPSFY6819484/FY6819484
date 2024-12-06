@@ -74,7 +74,7 @@ A Formula 1 cars aerodynamics can decide whether it stays on the track or takes 
   <hr>
   <h3 id="Article">Article</h3>
   <hr>
-
+  <div id=“ArticleText">
   <p class="ex1">
     Early Years: Simplicity and Mechanical Focus 
     </p>
@@ -109,6 +109,8 @@ Conclusion
    </p>
 From the basic cigar shaped cars of the 1950s to the extremely complex, regulation-driven designs of today, Formula 1’s aerodynamics have undergone a continuous innovation journey. Formula 1 is now a display of engineering prowess thanks to significant turning points like the 1960s introduction of wings, the 1970s ground effect, and the current hybrid integration. Aerodynamics shapes both performance and regulation by striking a balance between the sport's pursuit of speed and sustainability and safety. Aerodynamics will continue to be essential to Formula 1's quest for efficiency, exciting competition, and the future of motorsport as it pushes technological limits.
 </p>
+  </div>
+
 </body>
 </html>
 
@@ -147,83 +149,44 @@ Wikipedia (n.d.) "Drag reduction system." Available at: <a href="https://en.wiki
 </body>
 </html>
 
-<!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Adding last update ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-    <!-- Last commit time display -->
-<div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
-    Verify Last Modified Time
-</button>
-<script>
-    async function getLastUpdatedTime() {
-        const username = 'FEPSFY6819484';
-        const repo = 'FY6819484';
-       
-        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                }
-            });
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
-            }
-            const commits = await response.json();
-            if (commits && commits.length > 0) {
-                const lastCommitDate = new Date(commits[0].commit.committer.date);
-               
-                // Displaying the time on load
-                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-            } else {
-                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
-            }
-        } catch (error) {
-            console.error('Error fetching the last updated time:', error);
-            document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-        }
-    }
-    // Function to verify the last update time by re-fetching it from the API
-    async function verifyLastUpdatedTime() {
-        document.getElementById('last-updated').innerText = 'Verifying...';
-        await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from GitHub API.");
-    }
-    // Initial load to display the time on page load
-    window.onload = getLastUpdatedTime;
-</script>
-
-
- <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-<!-- Placeholder for total word count -->
+<!--Placeholder for total word count-->
 <p id="totalWordCount"></p>
-<hr>
+  <hr>
 <script>
   // Function to calculate and display word count for a specified section
   function displayWordCount(sectionId, outputId) {
-    // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-    // Count the words
-    const wordCount = wordArray.length;
-    // Return the word count for summing purposes
-    return wordCount;
+      // Get the text content from the specified section
+      const text = document.getElementById(sectionId).textContent;
+      // Split text into words based on spaces and filter out any empty strings
+      const wordArray = text.trim().split(/\s+/);
+      // Count the words
+      const wordCount = wordArray.length;
+    // Return the word count
+      return wordCount; 
   }
+
   // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    // Calculate the sum of all selected sections
-    const totalWordCount = AnalysisCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+      // Calculate word count for each section and accumulate the total
+      const ArticleCount = displayWordCount("ArticleText");
+
+      // Calculate the sum of all selected sections
+      const totalWordCount = ArticleCount;
+
+      // Display the total word count
+      document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
+
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
 </script>
+
+  </body>
+</html>
+
+
+
+     
+       
+     
+  
