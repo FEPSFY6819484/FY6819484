@@ -151,7 +151,7 @@ Wikipedia (n.d.) "Drag reduction system." Available at: <a href="https://en.wiki
 <p id="totalWordCount"></p>
 <script>
   // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId) {
+  function displayWordCount(sectionId, outputId) {
       // Get the text content from the specified section
       const text = document.getElementById(sectionId).textContent;
       // Split text into words based on spaces and filter out any empty strings
@@ -164,7 +164,7 @@ Wikipedia (n.d.) "Drag reduction system." Available at: <a href="https://en.wiki
   // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
       // Calculate word count for each section and accumulate the total
-      const ArticleCount = displayWordCount("Article_InText");
+      const AnalysisCount = displayWordCount("Article_InText");
 
       // Calculate the sum of all selected sections
       const totalWordCount = ArticleCount;
