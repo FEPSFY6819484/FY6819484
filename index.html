@@ -147,40 +147,41 @@ Wikipedia (n.d.) "Drag reduction system." Available at: <a href="https://en.wiki
 </body>
 </html>
 
-<!--Placeholder for total word count-->
-<p id="totalWordCount"></p>
-  <hr>
 <script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-      // Get the text content from the specified section
-      const text = document.getElementById(sectionId).textContent;
-      // Split text into words based on spaces and filter out any empty strings
-      const wordArray = text.trim().split(/\s+/);
-      // Count the words
-      const wordCount = wordArray.length;
-    // Return the word count
-      return wordCount; 
+  // Function to calculate word count for a specified section
+  function calculateWordCount(sectionId) {
+    // Select the section by ID and aggregate its text content
+    const section = document.getElementById(sectionId);
+    if (!section) return 0; // Return 0 if the section doesn't exist
+    const text = section.textContent || ""; // Get the text content of the section
+    const words = text.trim().split(/\s+/); // Split into words
+    return words.filter(word => word !== "").length; // Return count excluding empty strings
   }
 
-  // Function to calculate and display total word count from selected sections
+
+  // Function to display total word count from selected sections
   function displayTotalWordCount() {
-      // Calculate word count for each section and accumulate the total
-      const ArticleCount = displayWordCount("ArticleText");
+    // Define IDs of sections to include in the total count
+    const sectionIds = ["Abstract", "Article"];
+    let totalWordCount = 0;
 
-      // Calculate the sum of all selected sections
-      const totalWordCount = ArticleCount;
 
-      // Display the total word count
-      document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    // Calculate the total word count for the specified sections
+    sectionIds.forEach(sectionId => {
+      totalWordCount += calculateWordCount(sectionId);
+    });
+
+
+    // Display the total word count in the placeholder
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
 
-  // Run the function for specific sections and display total count when the page loads
+
+  // Run the function to display total word count when the page loads
   window.onload = displayTotalWordCount;
 </script>
 
-  </body>
-</html>
+
 
 
 
