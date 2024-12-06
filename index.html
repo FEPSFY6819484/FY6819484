@@ -164,10 +164,10 @@ Wikipedia (n.d.) "Drag reduction system." Available at: <a href="https://en.wiki
   // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
       // Calculate word count for each section and accumulate the total
-      const AnalysisCount = displayWordCount("Analysis_InText");
+      const ArticleCount = displayWordCount("ArticleText");
 
       // Calculate the sum of all selected sections
-      const totalWordCount = AnalysisCount;
+      const totalWordCount = ArticleCount;
 
       // Display the total word count
       document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
